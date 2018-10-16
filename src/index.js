@@ -1,12 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Form } from "./Form";
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function App() {
+  return (
+    <div className="App">
+      <Form
+        onFormCompleted={() => alert("Form completed!")}
+        onFormReset={() => alert("Form reset!")}
+        collectionOptions={[
+          { id: "option1", description: "Option 1" },
+          { id: "option2", description: "Option 2" },
+          { id: "option3", description: "Option 3" }
+        ]}
+        initialValues={{
+          name: "Order",
+          formOptions: []
+        }}
+      />
+    </div>
+  );
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
